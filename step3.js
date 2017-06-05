@@ -9,12 +9,8 @@ function getAndPrintHTML(options) {
   var buffer = "";
   https.get(options, function (response) {
     response.setEncoding('utf8');
-    response.on('data', function (data) {
-      buffer += data;
-    });
-    response.on('end', function () {
-      console.log(buffer);
-    });
+    response.on('data', data => buffer += data);
+    response.on('end', () => console.log(buffer));
   });
 }
 
